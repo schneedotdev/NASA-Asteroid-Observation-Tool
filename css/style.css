@@ -7,7 +7,34 @@
 ================= Layout Styles =================
 */
 
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background: url("../img/galaxy.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
 
 /*
 ================= Additional Styles =================
 */
+
+#earth {
+    position: absolute;
+    /* position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%); */
+    width: 80%;
+}
+
+.asteroid {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: red;
+}
