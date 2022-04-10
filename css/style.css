@@ -33,7 +33,7 @@ body {
 
 .asteroid {
     position: absolute;
-    width: 20px;
-    height: 20px;
-    background: red;
+    width: 4rem;
+    height: 4rem;
+    /* background: red; */
 }

@@ -30,8 +30,18 @@ class Asteroid {
     }
 
     createElement(name) {
-        let asteroid = document.createElement('div');
+        // let asteroid = document.createElement('div');
+        const asteroid = document.createElement('img');
         asteroid.classList.add('asteroid');
+        asteroid.src = './img/asteroid.png';
+
+        // const size = (Math.random() * 19) + 41;
+
+        const size = (Math.random() * 39) + 21;
+
+        asteroid.style.width = `${size}px`;
+        asteroid.style.height = `${size}px`;
+
         document.getElementById('asteroids').appendChild(asteroid);
 
         this.move(asteroid, this.x, this.y)
@@ -58,7 +68,7 @@ class Asteroid {
                 x = this.x
                 y = this.y
             }
-        }, 50);
+        }, 60);
         
         console.log(this.name)
     }
