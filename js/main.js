@@ -4,9 +4,8 @@ fetch(`https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=${API_KEY}`)
     .then(res => res.json())
     .then(data => {
         data.near_earth_objects.forEach(obj => {
-            let asteroid = new Asteroid(obj.name_limited, 5);
-
-            asteroid.createElement(obj.name_limited)
+            let asteroid = new Asteroid(obj.name_limited, obj.id);
+            asteroid.createElement()
         });
     })
     .catch(err => {
@@ -22,44 +21,43 @@ window.onresize = function () {
 }
 
 class Asteroid {
-    constructor(name, distance) {
+    constructor(name, id) {
         this.name = name;
-        this.distance = distance;
+        this.id = id;
         this.x = ~~(Math.random() * width);
         this.y = ~~(Math.random() * height);
     }
 
-    createElement(name) {
-        // let asteroid = document.createElement('div');
+    createElement() {
         const asteroid = document.createElement('img');
         asteroid.classList.add('asteroid');
-        asteroid.src = './img/asteroid.png';
+        asteroid.setAttribute('id', this.id);
+        asteroid.src = './img/asteroid2.png';
 
-        // const size = (Math.random() * 19) + 41;
-
-        const size = (Math.random() * 39) + 21;
-
+        const size = (Math.random() * 19) + 41;
         asteroid.style.width = `${size}px`;
         asteroid.style.height = `${size}px`;
 
         document.getElementById('asteroids').appendChild(asteroid);
 
-        this.move(asteroid, this.x, this.y)
+        this.move(asteroid)
     }
 
     // Need to make this method private
-    move(asteroid, x, y) {
+    move(asteroid) {
         let bool = Math.random() < .5
 
         const step = _ => {
             let val = Math.floor(Math.random() * 3) + 1
-            console.log(val)
             return  bool ? -val : val
         }
 
+        let [x, y, run, rise] = [this.x, this.y, step(), step()]
+        this.setRotation(asteroid, rise, run);
+
         let moveAsteroid = setInterval(() => {  
-            x += step();
-            y += step();
+            x += run;
+            y += rise;
 
             asteroid.style.top = `${y}px`;
             asteroid.style.left = `${x}px`;
@@ -72,11 +70,15 @@ class Asteroid {
         
         console.log(this.name)
     }
+
+    // Need to make this method private
+    setRotation(asteroid, rise, run) {
+        let angle = Math.atan(rise / run) * 100;
+
+        if (Math.sign(rise) === 1)
+            angle = angle + 180;
+        
+        console.log(angle);
+        asteroid.style.transform = `rotate(${angle}deg)`;
+    }
 }
-
-
-// let i = 0;
-// setInterval(() => {
-//     i++;
-//     document.querySelector('').style.transform = `rotate(${i}deg)`;
-// }, 50)
