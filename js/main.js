@@ -32,38 +32,41 @@ class Asteroid {
     createElement(name) {
         let asteroid = document.createElement('div');
         asteroid.classList.add('asteroid');
-
         document.getElementById('asteroids').appendChild(asteroid);
 
-        console.log(this)
         this.move(asteroid, this.x, this.y)
     }
 
+    // Need to make this method private
     move(asteroid, x, y) {
-        console.log("X", x, "Y", y)
-        let moveAsteroid = setInterval(() => {
-            x++ && y++;
+        let bool = Math.random() < .5
+
+        const step = _ => {
+            let val = Math.floor(Math.random() * 3) + 1
+            console.log(val)
+            return  bool ? -val : val
+        }
+
+        let moveAsteroid = setInterval(() => {  
+            x += step();
+            y += step();
+
             asteroid.style.top = `${y}px`;
             asteroid.style.left = `${x}px`;
         
-            if (x > width || y > height) {
-                clearInterval(moveAsteroid);
+            if (x > width || y > height || x < -50 || y < -50) {
+                x = this.x
+                y = this.y
             }
-        }, 25);
+        }, 50);
         
         console.log(this.name)
     }
 }
 
 
-
-
-// let moveAsteroid = setInterval(() => {
-//     x++ && y++;
-//     asteroid.style.top = `${y}px`;
-//     asteroid.style.left = `${x}px`;
-
-//     if(x > width || y > height) {
-//         clearInterval(moveAsteroid);
-//     }
-// }, 25);
+// let i = 0;
+// setInterval(() => {
+//     i++;
+//     document.querySelector('').style.transform = `rotate(${i}deg)`;
+// }, 50)

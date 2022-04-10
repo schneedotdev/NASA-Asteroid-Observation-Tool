@@ -17,18 +17,17 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    overflow: hidden;
 }
-
 /*
 ================= Additional Styles =================
 */
 
 #earth {
-    position: absolute;
-    /* position: fixed;
+    position: fixed;
     top: 0;
     left: 50%;
-    transform: translate(-50%); */
+    transform: translate(-50%);
     width: 80%;
 }
 
