@@ -17,6 +17,7 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    font-family: 'Roboto Mono', monospace;
     overflow: hidden;
 }
 /*
@@ -63,17 +64,22 @@ body {
     display: none;
     position: absolute;
 
+    transform: translate(-50%);
+    left: 50%;
+
+    margin-top: 10rem;
+
     background: rgba(45, 45, 45, 0.8);
     border-radius: 1rem;
     border: 1rem solid white;
 
-    margin: 10rem;
     padding: 3rem 3rem 5.6rem 3rem;
 }
 
 .close {
     display: flex;
     justify-content: right;
+    align-items: center;
 }
 
 #x-button {
@@ -82,7 +88,7 @@ body {
     color: white;
 
     text-align: center;
-    padding: .3rem .6rem;
+    padding: .2rem .6rem .6rem .6rem;
     border-radius: 50%;
     text-decoration: none;
 }
@@ -115,4 +121,9 @@ body {
 .overlay-info {
     font-size: 2rem;
     color: white;
+    margin-top: 1rem;
+}
+
+.info-title {
+    color: rgb(0, 175, 0);
 }

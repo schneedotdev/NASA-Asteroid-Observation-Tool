@@ -1,4 +1,5 @@
 let API_KEY = prompt('Please enter your api key from https://api.nasa.gov/')
+
 let width = window.innerWidth;
 let height = window.innerHeight;
 
@@ -64,7 +65,6 @@ class Asteroid {
         this.events(asteroid, title);
     }
 
-    // Need to make this method private
     move(asteroid, img) {
         let bool = Math.random() < .5
 
@@ -88,11 +88,8 @@ class Asteroid {
                 y = this.y
             }
         }, 60);
-        
-        // console.log(this)
     }
 
-    // Need to make this method private
     rotate(img, rise, run) {
         let angle = Math.atan(rise / run) * 100;
 
@@ -122,16 +119,20 @@ class Asteroid {
             title.innerText = this.fullName;
 
             const observed = document.createElement('p');
-            observed.innerText = `First Observed: ${this.firstObserved}`;
+            observed.innerHTML = `
+                <span class="info-title">First Observed:</span> ${this.firstObserved}
+            `;
             observed.classList.add('overlay-info');
 
             const magnitude = document.createElement('p');
-            magnitude.innerText = `Magnitude: ${this.magnitude}`;
+            magnitude.innerHTML = `
+                <span class="info-title">Magnitude:</span> ${this.magnitude}
+            `;
             magnitude.classList.add('overlay-info');
 
             const hazard = document.createElement('p');
             hazard.innerHTML = `
-                Potential Danger:
+                <span class="info-title">Potential Danger:</span>
                 <span style="color: ${this.hazardous ? 'red' : 'white'}">${this.hazardous ? 'This asteroid is a potential threat to Earth!' : 'This asteroid is just a passerby, be thankful it has other plans.'}</span>
             `;
             hazard.classList.add('overlay-info');
