@@ -33,9 +33,6 @@ body {
 
 .asteroid {
     position: absolute;
-    /* width: 4rem;
-    height: 4rem; */
-    /* background: red; */
 }
 
 .asteroid-name {

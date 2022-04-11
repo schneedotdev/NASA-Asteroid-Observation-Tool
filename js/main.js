@@ -4,6 +4,7 @@ fetch(`https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=${API_KEY}`)
     .then(res => res.json())
     .then(data => {
         data.near_earth_objects.forEach(obj => {
+            console.log(obj)
             let asteroid = new Asteroid(obj.name_limited, obj.id);
             asteroid.createElement()
         });
@@ -32,24 +33,16 @@ class Asteroid {
         // this.y = y;
     }
 
+
     createElement() {
         const asteroid = document.createElement('div');
         asteroid.classList.add('asteroid');
         
-        // const above = `<h3 id="${this.id}-above" class="asteroid-name">${this.name}</h3>`
-        // const below = `<h3 id="${this.id}-below" class="asteroid-name">${this.name}</h3>`
-
-        const above = document.createElement('h3');
-        above.setAttribute('id', `${this.id}-above`);
-        above.classList.add('asteroid-name');
-        above.style.display = 'none';
-        above.innerText = this.name;
-
-        const below = document.createElement('h3');
-        below.setAttribute('id', `${this.id}-below`);
-        below.classList.add('asteroid-name');
-        below.style.display = 'none';
-        below.innerText = this.name;
+        const title = document.createElement('h3');
+        title.setAttribute('id', `${this.id}-title`);
+        title.classList.add('asteroid-name');
+        title.style.display = 'none';
+        title.innerText = this.name;
 
         const img = document.createElement('img');
         img.setAttribute('id', this.id);
@@ -57,34 +50,15 @@ class Asteroid {
         img.src = './img/asteroid.png';
         img.alt = "image of an asteroid"
 
-        const size = (Math.random() * 19) + 41;
-        img.style.width = `${size}px`;
-        img.style.height = `${size}px`;
+        this.determineSize(img);
 
-        asteroid.appendChild(above);
         asteroid.appendChild(img);
-        asteroid.appendChild(below);
-
-        // const asteroid = document.createElement('img');
-        // asteroid.classList.add('asteroid');
-        // asteroid.setAttribute('id', this.id);
-        // asteroid.src = './img/asteroid.png';
-
-        
-        // const img = document.getElementById(`${this.id}`);
-        // const size = (Math.random() * 19) + 41;
-        // img.style.width = `${size}px`;
-        // img.style.height = `${size}px`;
+        asteroid.appendChild(title);
 
         document.getElementById('asteroids').appendChild(asteroid);
 
-        // const size = (Math.random() * 19) + 41;
-        // asteroid.style.width = `${size}px`;
-        // asteroid.style.height = `${size}px`;
-
-        // document.getElementById('asteroids').appendChild(asteroid);
-
-        this.move(asteroid, img)
+        this.move(asteroid, img);
+        this.events(asteroid, title);
     }
 
     // Need to make this method private
@@ -92,10 +66,7 @@ class Asteroid {
         let bool = Math.random() < .5
 
         const step = _ => {
-            let val = Math.floor(Math.random() * 3) + 1
-
-            this.setHoverLocation(bool);
-
+            let val = Math.floor(Math.random() * 3) + 1;
             return  bool ? -val : val;
         }
 
@@ -115,7 +86,7 @@ class Asteroid {
             }
         }, 60);
         
-        console.log(this.name)
+        // console.log(this)
     }
 
     // Need to make this method private
@@ -125,17 +96,29 @@ class Asteroid {
         if(Math.sign(rise) === 1)
             angle = angle + 180;
         
-        console.log(angle);
         img.style.transform = `rotate(${angle}deg)`;
     }
 
-    setHoverLocation(bool) {
-        if(bool) {
-            document.getElementById(`${this.id}-below`).style.display = "block";
-        } else {
-            document.getElementById(`${this.id}-above`).style.display = "block";
-        }
+    determineSize(img) {
+        const size = (Math.random() * 19) + 41;
+        img.style.width = `${size}px`;
+        img.style.height = `${size}px`;
     }
+
+    events(asteroid, title) {
+        asteroid.addEventListener('mouseover', () => {
+            title.style.display = "block";
+        });
+        asteroid.addEventListener('mouseleave', () => {
+            title.style.display = "none";
+        });
+        asteroid.addEventListener('click', () => {
+            console.log('clicked')
+            /* do stuff here to display asteroid information */
+        });
+    }
+
+
 
 
     // startLocation() {
