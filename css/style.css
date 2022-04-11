@@ -37,7 +37,82 @@ body {
 
 .asteroid-name {
     color: white;
-    font-size: 1rem;
+    font-size: 1.3rem;
     min-height: 2rem;
     min-width: 2rem;
+}
+
+#author {
+    position: absolute;
+    font-size: 1.5rem;
+    bottom: 1rem;
+    right: 2rem;
+    color: #fd8721;
+}
+
+#website {
+    color: #e24916;
+}
+
+#website:hover {
+    color: #fecb00;
+}
+
+/* overlay */
+#overlay {
+    display: none;
+    position: absolute;
+
+    background: rgba(45, 45, 45, 0.8);
+    border-radius: 1rem;
+    border: 1rem solid white;
+
+    margin: 10rem;
+    padding: 3rem 3rem 5.6rem 3rem;
+}
+
+.close {
+    display: flex;
+    justify-content: right;
+}
+
+#x-button {
+    font-size: 2rem;
+    background: red;
+    color: white;
+
+    text-align: center;
+    padding: .3rem .6rem;
+    border-radius: 50%;
+    text-decoration: none;
+}
+
+.info {
+    display: flex;
+    align-items: center;
+}
+
+.overlay-img,
+#overlay-text {
+    flex: .5;
+}
+
+#image {
+    /* width: 50%; */
+    width: 10rem;
+}
+
+.overlay-text {
+    padding-left: 2rem;
+}
+
+#overlay-title {
+    font-size: 3rem;
+    color: rgb(0, 255, 0);
+    margin-bottom: 1rem;
+}
+
+.overlay-info {
+    font-size: 2rem;
+    color: white;
 }
