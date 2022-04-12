@@ -118,28 +118,21 @@ class Asteroid {
             const title = document.getElementById('overlay-title');
             title.innerText = this.fullName;
 
-            const observed = document.createElement('p');
-            observed.innerHTML = `
-                <span class="info-title">First Observed:</span> ${this.firstObserved}
-            `;
-            observed.classList.add('overlay-info');
-
-            const magnitude = document.createElement('p');
+            const magnitude = document.getElementById('magnitude');
             magnitude.innerHTML = `
                 <span class="info-title">Magnitude:</span> ${this.magnitude}
             `;
-            magnitude.classList.add('overlay-info');
+            
+            const observed = document.getElementById('observed');
+            observed.innerHTML = `
+                <span class="info-title">First Observed:</span> ${this.firstObserved}
+            `;
 
-            const hazard = document.createElement('p');
+            const hazard = document.getElementById('hazard');
             hazard.innerHTML = `
                 <span class="info-title">Potential Danger:</span>
                 <span style="color: ${this.hazardous ? 'red' : 'white'}">${this.hazardous ? 'This asteroid is a potential threat to Earth!' : 'This asteroid is just a passerby, be thankful it has other plans.'}</span>
             `;
-            hazard.classList.add('overlay-info');
-
-            title.after(hazard);
-            title.after(observed);
-            title.after(magnitude);
         });
 
         document.getElementById('x-button').addEventListener('click', () => {
