@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>NASA Archived Asteroid Visualization Tool</h1>
+  <h1>NASA Asteroid Observation Tool</h1>
   <p>Using NASA's Asteroid NeoWs API, this app allows you to observe an archive of asteroids that have been within a close proximity of earth.</p>
   <p><b>Live Website:</b> https://asteroid-observer.netlify.app</p>
 </div>
