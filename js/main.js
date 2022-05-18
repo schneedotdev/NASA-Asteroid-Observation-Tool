@@ -1,4 +1,6 @@
-let API_KEY = prompt('Please enter your api key from https://api.nasa.gov/')
+// let API_KEY = prompt('Please enter your api key from https://api.nasa.gov/')
+// replace this line with a token secret.
+let API_KEY = 'hQcpdbmteaIXi9ZrzhK2T4wjidCtc2dl92MpLKRJ'
 
 let width = window.innerWidth;
 let height = window.innerHeight;
