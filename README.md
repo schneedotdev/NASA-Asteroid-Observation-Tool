@@ -13,7 +13,7 @@
 
 **Tech used:** HTML, CSS, JavaScript
 
-Using JavaScript's Fetch API, I was able to request data from NASA's NeoWs API. Once the response is received, I populate the DOM with elements representing each of NASA's documented asteroids. I use an image of an asteroid to represent each object that was received from NASA. Each asteroid has a hover state that displays the asteroid flying across the screen and a click event which brings up information about the asteroid. Lastly, each asteroid is given a random location, size and trajectory/slope to follow. The image used is then rotated based on the angle produced by the tangent line given by the slope, and the x axis. 
+Using the Fetch API, I was able to request data from NASA's NeoWs API. Once the response is received, I populate the DOM with elements representing each of NASA's documented asteroids. I use an image of an asteroid to represent each object that was received from NASA. Each asteroid has a hover state that displays the asteroid flying across the screen and a click event which brings up information about the asteroid. Lastly, each asteroid is given a random location, size and trajectory/slope to follow. The image used is then rotated based on the angle produced by the tangent line given by the slope, and the x axis. 
 
 ## Future Optimizations:
 
